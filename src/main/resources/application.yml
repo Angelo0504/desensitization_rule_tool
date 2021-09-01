@@ -1,0 +1,11 @@
+server:
+    port: 10821
+spring:
+    jmx:
+        enabled: false
+
+javafx:
+#    title: 脱敏工具
+    appicons: /images/icon.jpg
+    stage:
+        resizable: true

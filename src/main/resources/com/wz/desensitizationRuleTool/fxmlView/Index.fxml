@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.text.Text?>
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wz.desensitizationRuleTool.controller.IndexController">
+	<children>
+      <BorderPane layoutY="2.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+         <top>
+            <HBox alignment="CENTER_LEFT" spacing="5.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MenuBar fx:id="mainMenuBar" cache="true">
+<!--                      工具栏-菜单-->
+                    <menus>
+                        <!--                      工具栏-文件-->
+                      <Menu fx:id="fileToolMenu" mnemonicParsing="false" text="%FileToolMenu">
+<!--                          <MenuItem fx:id="openFile" mnemonicParsing="false" onAction="#openFile" text="%openFile"/>-->
+<!--                          <MenuItem mnemonicParsing="false" onAction="#saveFile" text="%saveFile" />-->
+                      </Menu>
+<!--                        工具栏-帮助-->
+                      <Menu fx:id="helpMenu" mnemonicParsing="false" text="%Help">
+<!--                          操作手册-->
+<!--                          <MenuItem mnemonicParsing="false" onAction="#operationManualAction" text="%operationManual" />-->
+<!--                          <MenuItem mnemonicParsing="false" onAction="#aboutAction" text="%About" />-->
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
+         </top>
+<!--         <center>-->
+<!--            <TabPane fx:id="tabPaneMain" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />-->
+<!--             start-->
+             <left>
+                 <TabPane prefHeight="800" prefWidth="1800" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                     <tabs>
+                         <Tab text="数据脱敏">
+                             <content>
+                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1800">
+                                     <children>
+                                         <TabPane layoutY="-1.0" prefHeight="800" prefWidth="1800" tabClosingPolicy="UNAVAILABLE">
+                                             <tabs>
+                                                 <Tab text="原始数据">
+                                                     <content>
+                                                         <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1800">
+                                                             <children>
+                                                                 <TableView fx:id="stmtYsDataTable" layoutX="6.0" layoutY="3.0" prefHeight="800.0" prefWidth="1800">
+                                                                     <columns>
+<!--                                                                         <TableColumn prefWidth="104.80001974105835" text="C1" />-->
+<!--                                                                         <TableColumn prefWidth="98.39995574951172" text="C2" />-->
+<!--                                                                         <TableColumn prefWidth="58.4000244140625" text="C1" />-->
+<!--                                                                         <TableColumn prefWidth="96.79998779296875" text="C1" />-->
+<!--                                                                         <TableColumn prefWidth="96.0" text="C1" />-->
+<!--                                                                         <TableColumn prefWidth="144.00003051757812" text="C1" />-->
+<!--                                                                         <TableColumn prefWidth="197.60003662109375" text="C1" />-->
+                                                                     </columns>
+                                                                 </TableView>
+                                                             </children>
+                                                         </AnchorPane>
+                                                     </content>
+                                                 </Tab>
+                                                 <Tab text="脱敏数据">
+                                                     <content>
+                                                         <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1800">
+                                                             <children>
+                                                                 <TableView layoutX="10.0" layoutY="5.0" prefHeight="800.0" prefWidth="1800">
+                                                                     <columns>
+                                                                         <TableColumn prefWidth="75.0" text="C1" />
+                                                                         <TableColumn prefWidth="75.0" text="C2" />
+                                                                     </columns>
+                                                                 </TableView>
+                                                             </children>
+                                                         </AnchorPane>
+                                                     </content>
+                                                 </Tab>
+                                                 <Tab text="对比数据">
+                                                     <content>
+                                                         <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1800">
+                                                             <children>
+                                                                 <TableView layoutX="14.0" layoutY="29.0" prefHeight="800.0" prefWidth="1800">
+                                                                     <columns>
+                                                                         <TableColumn prefWidth="75.0" text="C1" />
+                                                                         <TableColumn prefWidth="75.0" text="C2" />
+                                                                     </columns>
+                                                                 </TableView>
+                                                                 <TableView layoutX="14.0" layoutY="304.0" prefHeight="800.0" prefWidth="1800">
+                                                                     <columns>
+                                                                         <TableColumn prefWidth="75.0" text="C1" />
+                                                                         <TableColumn prefWidth="75.0" text="C2" />
+                                                                     </columns>
+                                                                 </TableView>
+                                                                 <Text layoutX="21.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="原始数据：" />
+                                                                 <Text layoutX="21.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="脱敏数据：" />
+                                                             </children>
+                                                         </AnchorPane>
+                                                     </content>
+                                                 </Tab>
+                                             </tabs>
+                                         </TabPane>
+                                     </children>
+                                 </AnchorPane>
+                             </content>
+                         </Tab>
+                         <Tab text="数据还原">
+                             <content>
+                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1800.0">
+                                     <children>
+                                         <TabPane prefHeight="800.0" prefWidth="1800.0" tabClosingPolicy="UNAVAILABLE">
+                                             <tabs>
+                                                 <Tab text="脱敏数据">
+                                                     <content>
+                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1800.0">
+                                                             <children>
+                                                                 <TableView layoutX="14.0" layoutY="9.0" prefHeight="800.0" prefWidth="1800.0">
+                                                                     <columns>
+                                                                         <TableColumn prefWidth="75.0" text="C1" />
+                                                                         <TableColumn prefWidth="75.0" text="C2" />
+                                                                     </columns>
+                                                                 </TableView>
+                                                             </children>
+                                                         </AnchorPane>
+                                                     </content>
+                                                 </Tab>
+                                                 <Tab text="原始数据">
+                                                     <content>
+                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1800.0">
+                                                             <children>
+                                                                 <TableView layoutX="14.0" layoutY="9.0" prefHeight="800.0" prefWidth="1800.0">
+                                                                     <columns>
+                                                                         <TableColumn prefWidth="75.0" text="C1" />
+                                                                         <TableColumn prefWidth="75.0" text="C2" />
+                                                                     </columns>
+                                                                 </TableView>
+                                                             </children>
+                                                         </AnchorPane>
+                                                     </content>
+                                                 </Tab>
+                                                 <Tab text="对比数据">
+                                                     <content>
+                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1800.0">
+                                                             <children>
+                                                                 <Text layoutX="22.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="脱敏数据：" />
+                                                                 <TableView layoutX="14.0" layoutY="29.0" prefHeight="800.0" prefWidth="1800.0">
+                                                                     <columns>
+                                                                         <TableColumn prefWidth="75.0" text="C1" />
+                                                                         <TableColumn prefWidth="75.0" text="C2" />
+                                                                     </columns>
+                                                                 </TableView>
+                                                                 <Text layoutX="22.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="原始数据：" />
+                                                                 <TableView layoutX="14.0" layoutY="295.0" prefHeight="800.0" prefWidth="1800.0">
+                                                                     <columns>
+                                                                         <TableColumn prefWidth="75.0" text="C1" />
+                                                                         <TableColumn prefWidth="75.0" text="C2" />
+                                                                     </columns>
+                                                                 </TableView>
+                                                             </children>
+                                                         </AnchorPane>
+                                                     </content>
+                                                 </Tab>
+                                             </tabs>
+                                         </TabPane>
+                                     </children>
+                                 </AnchorPane>
+                             </content>
+                         </Tab>
+                     </tabs>
+                 </TabPane>
+             </left>
+<!--             end-->
+<!--         </center>-->
+      </BorderPane>
+	</children>
+</AnchorPane>

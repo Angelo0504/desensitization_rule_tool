@@ -1,0 +1,6 @@
+# Default ignored files
+#/.gitignore
+/DesensitizationRuleTool.iml
+/logs
+/target
+.idea
