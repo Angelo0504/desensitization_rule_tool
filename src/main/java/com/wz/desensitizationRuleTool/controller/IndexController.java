@@ -1,14 +1,12 @@
 package com.wz.desensitizationRuleTool.controller;
 
+import com.alibaba.excel.metadata.Sheet;
 import com.wz.desensitizationRuleTool.controller.index.PluginManageController;
 import com.wz.desensitizationRuleTool.model.ToolFxmlLoaderConfiguration;
 import com.wz.desensitizationRuleTool.services.IndexService;
 import com.wz.desensitizationRuleTool.services.index.PluginManageService;
 import com.wz.desensitizationRuleTool.services.index.SystemSettingService;
-import com.wz.desensitizationRuleTool.utils.Config;
-import com.wz.desensitizationRuleTool.utils.PoiExcelUtil;
-import com.wz.desensitizationRuleTool.utils.SpringUtil;
-import com.wz.desensitizationRuleTool.utils.XJavaFxSystemUtil;
+import com.wz.desensitizationRuleTool.utils.*;
 import com.wz.desensitizationRuleTool.view.IndexView;
 import com.xwintop.xcore.util.ConfigureUtil;
 import com.xwintop.xcore.util.HttpClientUtil;
@@ -25,6 +23,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.MapValueFactory;
@@ -34,6 +33,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
@@ -77,6 +77,7 @@ public class IndexController extends IndexView {
     private ObservableList<Map<String, Object>> analysisResults = FXCollections.observableArrayList();
     private ObservableList<Map> dataMap = FXCollections.observableArrayList();
     private Map<String, String> headMap = new HashMap<String, String>();
+    private List<String> excelHeads = new ArrayList<>();
 
     /**
      * 初始化
@@ -145,14 +146,23 @@ public class IndexController extends IndexView {
             fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Excel", "*.xlsx"),
                     new FileChooser.ExtensionFilter("XLS", "*.xls"), new FileChooser.ExtensionFilter("XLSX", "*.xlsx"));
             File file = fileChooser.showOpenDialog(selectFile);
-            Set<String> excelHeads = new HashSet<>();
             //TODO excel数据导入显示待补充
             try {
                  excelHeads = PoiExcelUtil.getExcelHeaders(file);
-                 //获取excel所有数据，并封装为map类型数据
+                /**
+                 * poi read excel method
+                 */
+                //获取excel所有数据，并封装为map类型数据
                 List<List<String>> list = PoiExcelUtil.getExcelData(file);
+                /**
+                 * easyexcel read excel method
+                 */
+                //第一个1代表sheet1, 第二个1代表从第几行开始读取数据，行号最小值为0
+                Sheet sheet = new Sheet(1, 1);
+                List<Object> objects = EasyExcelUtil.readLessThan1000RowBySheet(file.getPath(),sheet);
+                List<List<String>> list2 = EasyExcelUtil.getListString(objects);
                 //将excel数据内容（不包含表头）组装成tableView使用map类型数据需要的数据结构
-                analysisResults = PoiExcelUtil.generateMapData(excelHeads,list);
+                analysisResults = PoiExcelUtil.generateMapData(excelHeads,list2);
             } catch (Exception e) {
                 System.out.println("excel文件标题解决错误");
                 e.printStackTrace();
@@ -168,7 +178,19 @@ public class IndexController extends IndexView {
                     stmtYsDataTable.getColumns().add(tableColumn);
                 }
                 //设置表头之后，设置数据（将组装好的excel数据映射到表中）
-                stmtYsDataTable.setItems(analysisResults);
+                //数据分页显示
+                pnPagination.setCurrentPageIndex(0);
+                pnPagination.setPageCount((int)(analysisResults.size()/20)+1);
+                pnPagination.setPageFactory(new Callback<Integer, Node>() {
+                    @Override
+                    public Node call(Integer param) {
+                        ObservableList<Map<String, Object>> dataList = FXCollections.observableArrayList();
+                        dataList = PageUtil.createPageList(param,20,analysisResults);
+                        stmtYsDataTable.setItems(dataList);
+                        return stmtYsDataTable;
+                    }
+                });
+
             }
         });
         MenuItem menuItem2 = new MenuItem("另存为(A)",imageView2);
@@ -188,7 +210,7 @@ public class IndexController extends IndexView {
                 File file = fileChooser.showSaveDialog(selectFile);
                 if(file!=null){
                     //保存的文件路径不为空
-                    PoiExcelUtil.exportXlsx("sheet1",headMap,analysisResults,file);
+                    PoiExcelUtil.exportXlsx("sheet1",excelHeads,analysisResults,file);
                 }
             }
         });

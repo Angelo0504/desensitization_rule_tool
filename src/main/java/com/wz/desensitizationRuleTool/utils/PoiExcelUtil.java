@@ -28,24 +28,26 @@ public class PoiExcelUtil {
      * @return
      * @throws Exception
      */
-    public static Set<String> getExcelHeaders(File file) throws Exception {
+    public static List<String> getExcelHeaders(File file) throws Exception {
         InputStream is = new FileInputStream(file);
         Workbook workbook = new XSSFWorkbook(is);
         Sheet sheet = workbook.getSheetAt(0);
         System.out.println("该excel除标题共"+sheet.getLastRowNum()+"条数据");
         //获取 excel 第一行数据（表头）
         Row row = sheet.getRow(0);
-        //存放表头信息
-        Set<String> set = new HashSet<>();
+        //存放表头信息(set集合是无序的，可能导致数据展示获取数据和表头对不上)
+//        Set<String> set = new HashSet<>();
+        List<String> list = new ArrayList<>();
         //算下有多少列
         int colCount = sheet.getRow(0).getLastCellNum();
         System.out.println("该excel共"+colCount+"列");
         for (int j = 0; j < colCount; j++) {
             Cell cell = row.getCell(j);
             String cellValue = cell.getStringCellValue().trim();
-            set.add(cellValue);
+//            set.add(cellValue);
+            list.add(cellValue);
         }
-        return set;
+        return list;
     }
 
 
@@ -138,14 +140,18 @@ public class PoiExcelUtil {
      * @param list
      * @return
      */
-    public static ObservableList<Map<String, Object>> generateMapData(Set<String> heads, List<List<String>> list){
-        List<String> headList = new ArrayList<>(heads);
+    public static ObservableList<Map<String, Object>> generateMapData(List<String> heads, List<List<String>> list){
         ObservableList<Map> allData = FXCollections.observableArrayList();
         list.forEach(rowData->{
             Map<String,String> dataRow = new HashMap<>();
-            for (int i = 0; i < headList.size(); i++) {
-                String headColumn = headList.get(i);
-                dataRow.put(headColumn,rowData.get(i));
+            for (int i = 0; i < heads.size(); i++) {
+                //如果有对应的标题（表头）下的列为空，这时候获取不到数据
+                String headColumn = heads.get(i);
+                String content = "";
+                if(i<rowData.size()){
+                    content = rowData.get(i);
+                }
+                dataRow.put(headColumn,content);
             }
             allData.add(dataRow);
         });
@@ -159,10 +165,10 @@ public class PoiExcelUtil {
     /**
      * 导出数据
      *
-     * @param headMap
+     * @param excelHeads
      * @param dataList
      */
-    public static void exportXlsx(String sheetName, Map<String, String> headMap, List<Map<String, Object>> dataList,File file) throws IOException {
+    public static void exportXlsx(String sheetName, List<String> excelHeads, List<Map<String, Object>> dataList,File file) throws IOException {
 
         Workbook workbook = new XSSFWorkbook();
 
@@ -170,21 +176,18 @@ public class PoiExcelUtil {
 
 
         int rowIndex = 0, columnIndex = 0;
-        Set<String> keys = headMap.keySet();
-
         //表头
         Row row = sheet.createRow(rowIndex++);
-        for (String key : keys) {
+        for (String key : excelHeads) {
             Cell cell = row.createCell(columnIndex++);
-            cell.setCellValue(headMap.get(key));
+            cell.setCellValue(key);
         }
-
         //内容
         if (dataList != null && !dataList.isEmpty()) {
             for (Map<String, Object> map : dataList) {
                 row = sheet.createRow(rowIndex++);
                 columnIndex = 0;
-                for (String key : keys) {
+                for (String key : excelHeads) {
                     Cell cell = row.createCell(columnIndex++);
                     setCellValue(cell, map.get(key));
                 }

@@ -38,5 +38,12 @@ public abstract class IndexView implements Initializable {
     @FXML
     protected TableView stmtYsDataTable;
 
+    /**
+     * 数据脱敏-原始数据
+     * table-分页
+     */
+    @FXML
+    protected Pagination pnPagination;
+
 
 }

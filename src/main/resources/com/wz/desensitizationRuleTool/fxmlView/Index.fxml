@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Pagination?>
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wz.desensitizationRuleTool.controller.IndexController">
 	<children>
       <BorderPane layoutY="2.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
@@ -36,7 +37,6 @@
          </top>
 <!--         <center>-->
 <!--            <TabPane fx:id="tabPaneMain" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />-->
-<!--             start-->
              <left>
                  <TabPane prefHeight="800" prefWidth="1800" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
                      <tabs>
@@ -52,15 +52,9 @@
                                                              <children>
                                                                  <TableView fx:id="stmtYsDataTable" layoutX="6.0" layoutY="3.0" prefHeight="800.0" prefWidth="1800">
                                                                      <columns>
-<!--                                                                         <TableColumn prefWidth="104.80001974105835" text="C1" />-->
-<!--                                                                         <TableColumn prefWidth="98.39995574951172" text="C2" />-->
-<!--                                                                         <TableColumn prefWidth="58.4000244140625" text="C1" />-->
-<!--                                                                         <TableColumn prefWidth="96.79998779296875" text="C1" />-->
-<!--                                                                         <TableColumn prefWidth="96.0" text="C1" />-->
-<!--                                                                         <TableColumn prefWidth="144.00003051757812" text="C1" />-->
-<!--                                                                         <TableColumn prefWidth="197.60003662109375" text="C1" />-->
                                                                      </columns>
                                                                  </TableView>
+                                                                 <Pagination fx:id="pnPagination" layoutX="6.0" layoutY="3.0" maxPageIndicatorCount="8" pageCount="10" prefHeight="700.0" prefWidth="1800.0" />
                                                              </children>
                                                          </AnchorPane>
                                                      </content>
@@ -172,7 +166,6 @@
                      </tabs>
                  </TabPane>
              </left>
-<!--             end-->
 <!--         </center>-->
       </BorderPane>
 	</children>

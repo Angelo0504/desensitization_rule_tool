@@ -98,6 +98,17 @@
 			<artifactId>poi-ooxml-schemas</artifactId>
 			<version>3.15</version>
 		</dependency>
+		<!--		easyExcel-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>easyexcel</artifactId>
+			<version>1.1.2-beat1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
