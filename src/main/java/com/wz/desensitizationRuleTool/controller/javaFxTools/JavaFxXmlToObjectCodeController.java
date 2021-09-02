@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Lazy;
  * @ClassName: JavaFxXmlToObjectCodeController
  * @Description: javaFx Xml转对象工具
  * @author: Angelo
- * @date: 2019/4/25 0025 23:24
  */
 
 @Lazy

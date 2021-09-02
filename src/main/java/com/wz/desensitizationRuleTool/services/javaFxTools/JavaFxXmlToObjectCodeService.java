@@ -12,7 +12,6 @@ import java.util.List;
  * @ClassName: JavaFxXmlToObjectCodeService
  * @Description: JavaFxXml生成代码工具类
  * @author: Angelo
- * @date: 2017年11月10日 下午5:41:35
  */
 @Slf4j
 public class JavaFxXmlToObjectCodeService {

@@ -8,7 +8,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @ClassName: CorsConfig
  * @Description: 跨域权限配置
  * @author: Angelo
- * @date: 2017/11/20 17:34
  */
 @Configuration
 public class CorsConfig extends WebMvcConfigurerAdapter {

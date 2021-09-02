@@ -30,7 +30,6 @@ import lombok.extern.slf4j.Slf4j;
  * @ClassName: PluginManageController
  * @Description: 插件管理
  * @author: Angelo
- * @date: 2020/1/19 17:41
  */
 
 @Getter

@@ -16,7 +16,6 @@ import java.util.List;
  * @ClassName: ConsoleLogAppender
  * @Description: 日志打印控制台
  * @author: Angelo
- * @date: 2019/4/25 0025 23:18
  */
 
 @Data

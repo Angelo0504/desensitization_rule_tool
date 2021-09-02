@@ -15,7 +15,6 @@ import org.apache.commons.lang3.StringUtils;
  * @ClassName: XJavaFxSystemUtil
  * @Description: javafx系统层工具类
  * @author: Angelo
- * @date: 2017年11月10日 下午4:35:17
  */
 @Slf4j
 public class XJavaFxSystemUtil {

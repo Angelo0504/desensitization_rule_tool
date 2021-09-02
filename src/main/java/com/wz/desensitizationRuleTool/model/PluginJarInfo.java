@@ -6,7 +6,6 @@ import lombok.Data;
  * @ClassName: PluginJarInfo
  * @Description: 插件信息
  * @author: Angelo
- * @date: 2020/1/20 17:28
  */
 
 @Data
