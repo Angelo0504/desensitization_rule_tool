@@ -10,163 +10,124 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.Pagination?>
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wz.desensitizationRuleTool.controller.IndexController">
+<?import org.controlsfx.control.SegmentedButton?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Button?>
+<AnchorPane prefHeight="677.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wz.desensitizationRuleTool.controller.IndexController">
 	<children>
-      <BorderPane layoutY="2.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
-         <top>
-            <HBox alignment="CENTER_LEFT" spacing="5.0" BorderPane.alignment="CENTER">
-               <children>
-                  <MenuBar fx:id="mainMenuBar" cache="true">
-<!--                      工具栏-菜单-->
+                  <MenuBar fx:id="mainMenuBar" cache="true" layoutY="1.0">
+            <!--工具栏-菜单-->
                     <menus>
-                        <!--                      工具栏-文件-->
+                        <!--工具栏-文件-->
                       <Menu fx:id="fileToolMenu" mnemonicParsing="false" text="%FileToolMenu">
-<!--                          <MenuItem fx:id="openFile" mnemonicParsing="false" onAction="#openFile" text="%openFile"/>-->
-<!--                          <MenuItem mnemonicParsing="false" onAction="#saveFile" text="%saveFile" />-->
                       </Menu>
-<!--                        工具栏-帮助-->
+                        <!--工具栏-帮助-->
                       <Menu fx:id="helpMenu" mnemonicParsing="false" text="%Help">
-<!--                          操作手册-->
-<!--                          <MenuItem mnemonicParsing="false" onAction="#operationManualAction" text="%operationManual" />-->
-<!--                          <MenuItem mnemonicParsing="false" onAction="#aboutAction" text="%About" />-->
                       </Menu>
                     </menus>
                   </MenuBar>
-               </children>
-            </HBox>
-         </top>
-<!--         <center>-->
-<!--            <TabPane fx:id="tabPaneMain" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />-->
-             <left>
-                 <TabPane prefHeight="800" prefWidth="1800" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-                     <tabs>
-                         <Tab text="数据脱敏">
-                             <content>
-                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1800">
-                                     <children>
-                                         <TabPane layoutY="-1.0" prefHeight="800" prefWidth="1800" tabClosingPolicy="UNAVAILABLE">
-                                             <tabs>
-                                                 <Tab text="原始数据">
-                                                     <content>
-                                                         <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1800">
-                                                             <children>
-                                                                 <TableView fx:id="stmtYsDataTable" layoutX="6.0" layoutY="3.0" prefHeight="800.0" prefWidth="1800">
-                                                                     <columns>
-                                                                     </columns>
-                                                                 </TableView>
-                                                                 <Pagination fx:id="pnPagination" layoutX="6.0" layoutY="3.0" maxPageIndicatorCount="8" pageCount="10" prefHeight="700.0" prefWidth="1800.0" />
-                                                             </children>
-                                                         </AnchorPane>
-                                                     </content>
-                                                 </Tab>
-                                                 <Tab text="脱敏数据">
-                                                     <content>
-                                                         <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1800">
-                                                             <children>
-                                                                 <TableView layoutX="10.0" layoutY="5.0" prefHeight="800.0" prefWidth="1800">
-                                                                     <columns>
-                                                                         <TableColumn prefWidth="75.0" text="C1" />
-                                                                         <TableColumn prefWidth="75.0" text="C2" />
-                                                                     </columns>
-                                                                 </TableView>
-                                                             </children>
-                                                         </AnchorPane>
-                                                     </content>
-                                                 </Tab>
-                                                 <Tab text="对比数据">
-                                                     <content>
-                                                         <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1800">
-                                                             <children>
-                                                                 <TableView layoutX="14.0" layoutY="29.0" prefHeight="800.0" prefWidth="1800">
-                                                                     <columns>
-                                                                         <TableColumn prefWidth="75.0" text="C1" />
-                                                                         <TableColumn prefWidth="75.0" text="C2" />
-                                                                     </columns>
-                                                                 </TableView>
-                                                                 <TableView layoutX="14.0" layoutY="304.0" prefHeight="800.0" prefWidth="1800">
-                                                                     <columns>
-                                                                         <TableColumn prefWidth="75.0" text="C1" />
-                                                                         <TableColumn prefWidth="75.0" text="C2" />
-                                                                     </columns>
-                                                                 </TableView>
-                                                                 <Text layoutX="21.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="原始数据：" />
-                                                                 <Text layoutX="21.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="脱敏数据：" />
-                                                             </children>
-                                                         </AnchorPane>
-                                                     </content>
-                                                 </Tab>
-                                             </tabs>
-                                         </TabPane>
-                                     </children>
-                                 </AnchorPane>
-                             </content>
-                         </Tab>
-                         <Tab text="数据还原">
-                             <content>
-                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1800.0">
-                                     <children>
-                                         <TabPane prefHeight="800.0" prefWidth="1800.0" tabClosingPolicy="UNAVAILABLE">
-                                             <tabs>
-                                                 <Tab text="脱敏数据">
-                                                     <content>
-                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1800.0">
-                                                             <children>
-                                                                 <TableView layoutX="14.0" layoutY="9.0" prefHeight="800.0" prefWidth="1800.0">
-                                                                     <columns>
-                                                                         <TableColumn prefWidth="75.0" text="C1" />
-                                                                         <TableColumn prefWidth="75.0" text="C2" />
-                                                                     </columns>
-                                                                 </TableView>
-                                                             </children>
-                                                         </AnchorPane>
-                                                     </content>
-                                                 </Tab>
-                                                 <Tab text="原始数据">
-                                                     <content>
-                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1800.0">
-                                                             <children>
-                                                                 <TableView layoutX="14.0" layoutY="9.0" prefHeight="800.0" prefWidth="1800.0">
-                                                                     <columns>
-                                                                         <TableColumn prefWidth="75.0" text="C1" />
-                                                                         <TableColumn prefWidth="75.0" text="C2" />
-                                                                     </columns>
-                                                                 </TableView>
-                                                             </children>
-                                                         </AnchorPane>
-                                                     </content>
-                                                 </Tab>
-                                                 <Tab text="对比数据">
-                                                     <content>
-                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1800.0">
-                                                             <children>
-                                                                 <Text layoutX="22.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="脱敏数据：" />
-                                                                 <TableView layoutX="14.0" layoutY="29.0" prefHeight="800.0" prefWidth="1800.0">
-                                                                     <columns>
-                                                                         <TableColumn prefWidth="75.0" text="C1" />
-                                                                         <TableColumn prefWidth="75.0" text="C2" />
-                                                                     </columns>
-                                                                 </TableView>
-                                                                 <Text layoutX="22.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="原始数据：" />
-                                                                 <TableView layoutX="14.0" layoutY="295.0" prefHeight="800.0" prefWidth="1800.0">
-                                                                     <columns>
-                                                                         <TableColumn prefWidth="75.0" text="C1" />
-                                                                         <TableColumn prefWidth="75.0" text="C2" />
-                                                                     </columns>
-                                                                 </TableView>
-                                                             </children>
-                                                         </AnchorPane>
-                                                     </content>
-                                                 </Tab>
-                                             </tabs>
-                                         </TabPane>
-                                     </children>
-                                 </AnchorPane>
-                             </content>
-                         </Tab>
-                     </tabs>
-                 </TabPane>
-             </left>
-<!--         </center>-->
-      </BorderPane>
+<!--        数据还原-数据脱敏 toggle-button-->
+                    <SegmentedButton fx:id="segmentedButton" layoutX="14.0" layoutY="46.0">
+                        <buttons>
+                            <ToggleButton fx:id="dataDesensitizationButton1" selected="true" text="数据脱敏"/>
+                            <ToggleButton fx:id="dataRestorationButton1" text="数据还原"/>
+                        </buttons>
+                    </SegmentedButton>
+
+<!--                    没有数据-文件上传模块-->
+                    <AnchorPane fx:id="openFileAnchorPane" layoutX="-2.0" layoutY="84.0" prefHeight="595.0" prefWidth="1320.0" cache="true">
+                        <children>
+                            <Text layoutX="625.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="暂无数据" />
+                            <Button layoutX="620.0" layoutY="386.0" mnemonicParsing="false" text="上传文件" style="-fx-background-color: #66ccff" onAction="#uploadFile"/>
+                        </children>
+                    </AnchorPane>
+
+<!--        数据脱敏模块-->
+                    <AnchorPane fx:id="dataDesensitizationAnchorPane" layoutX="-2.0" layoutY="84.0" prefHeight="595.0" prefWidth="1320.0" cache="true" visible="false" managed="false">
+                        <children>
+                            <SegmentedButton layoutX="1063.0" layoutY="14.0">
+                                <buttons>
+                                    <ToggleButton fx:id="dataDesensitizationButton11" selected="true" text="原始数据"/>
+                                    <ToggleButton  fx:id="dataDesensitizationButton12" text="脱敏数据"/>
+                                    <ToggleButton fx:id="dataDesensitizationButton13" text="对比数据"/>
+                                </buttons>
+                            </SegmentedButton>
+<!--                            数据脱敏-原数据-->
+                            <TableView fx:id="dataDesensitizationTable1" layoutX="16.0" layoutY="46.0" prefHeight="648.0" prefWidth="1320.0">
+                                <columns>
+                                </columns>
+                            </TableView>
+<!--                            <Pagination fx:id="pnPagination" layoutX="6.0" layoutY="3.0" maxPageIndicatorCount="8" pageCount="10" prefHeight="700.0" prefWidth="1800.0" />-->
+                            <TableView fx:id="dataDesensitizationTable2" layoutX="16.0" layoutY="46.0" prefHeight="648.0" prefWidth="1320.0" visible="false" managed="false">
+                                <columns>
+                                    <TableColumn prefWidth="75.0" text="数据脱敏-脱敏数据" />
+                                    <TableColumn prefWidth="75.0" text="数据脱敏-脱敏数据" />
+                                    <TableColumn prefWidth="75.0" text="数据脱敏-脱敏数据" />
+                                </columns>
+                            </TableView>
+<!--                            <Pagination fx:id="pnPagination2" layoutX="6.0" layoutY="3.0" maxPageIndicatorCount="8" pageCount="10" prefHeight="700.0" prefWidth="1800.0" visible="false" managed="false" />-->
+                            <TableView fx:id="dataDesensitizationTable3" layoutX="16.0" layoutY="46.0" prefHeight="324.0" prefWidth="1320.0" visible="false" managed="false">
+                                <columns>
+                                    <TableColumn prefWidth="75.0" text="数据脱敏-对比数据" />
+                                    <TableColumn prefWidth="75.0" text="数据脱敏-对比数据" />
+                                    <TableColumn prefWidth="75.0" text="数据脱敏-对比数据" />
+                                </columns>
+                            </TableView>
+                            <Text fx:id="text1" layoutX="16.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="原始数据：" visible="false" managed="false"/>
+                            <Text fx:id="text2" layoutX="21.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="脱敏数据：" visible="false" managed="false"/>
+                            <TableView fx:id="dataDesensitizationTable4" layoutX="16.0" layoutY="345.0" prefHeight="324.0" prefWidth="1320.0" visible="false" managed="false">
+                                <columns>
+                                    <TableColumn prefWidth="75.0" text="C1" />
+                                    <TableColumn prefWidth="75.0" text="C2" />
+                                </columns>
+                            </TableView>
+<!--                            <Pagination fx:id="pnPagination3" layoutX="6.0" layoutY="3.0" maxPageIndicatorCount="8" pageCount="10" prefHeight="700.0" prefWidth="1800.0" visible="false" managed="false" />-->
+                            <Text  fx:id="text0" layoutX="16.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="（点击列表表头设置脱敏规则）"/>
+                        </children>
+                    </AnchorPane>
+
+
+        <!--        数据还原模块-->
+        <AnchorPane fx:id="dataRestorationAnchorPane" layoutX="-2.0" layoutY="84.0" prefHeight="595.0" prefWidth="1320.0" cache="true" visible="false" managed="false">
+            <children>
+                <SegmentedButton layoutX="1063.0" layoutY="14.0">
+                    <buttons>
+                        <ToggleButton fx:id="dataRestorationButton11" text="原始数据" selected="true"/>
+                        <ToggleButton  fx:id="dataRestorationButton12" text="还原数据"/>
+                        <ToggleButton fx:id="dataRestorationButton13" text="对比数据"/>
+                    </buttons>
+                </SegmentedButton>
+                <TableView fx:id="dataRestorationTable1" layoutX="16.0" layoutY="46.0" prefHeight="648.0" prefWidth="1320.0">
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="数据还原-原始数据" />
+                        <TableColumn prefWidth="75.0" text="数据还原-原始数据" />
+                        <TableColumn prefWidth="75.0" text="数据还原-原始数据" />
+                    </columns>
+                </TableView>
+                <TableView fx:id="dataRestorationTable2" layoutX="16.0" layoutY="46.0" prefHeight="648.0" prefWidth="1320.0" visible="false" managed="false">
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="数据还原-还原数据" />
+                        <TableColumn prefWidth="75.0" text="数据还原-还原数据" />
+                        <TableColumn prefWidth="75.0" text="数据还原-还原数据" />
+                    </columns>
+                </TableView>
+                <TableView fx:id="dataRestorationTable3" layoutX="16.0" layoutY="56.0" prefHeight="324.0" prefWidth="1320.0" visible="false" managed="false">
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="数据还原-对比数据" />
+                        <TableColumn prefWidth="75.0" text="数据还原-对比数据" />
+                        <TableColumn prefWidth="75.0" text="数据还原-对比数据" />
+                    </columns>
+                </TableView>
+                <Text fx:id="text3" layoutX="16.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="原始数据：" visible="false" managed="false"/>
+                <Text fx:id="text4" layoutX="21.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="脱敏数据：" visible="false" managed="false"/>
+                <TableView fx:id="dataRestorationTable4" layoutX="16.0" layoutY="335.0" prefHeight="324.0" prefWidth="1320.0" visible="false" managed="false">
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="C1" />
+                        <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                </TableView>
+                <Text fx:id="text5" layoutX="16.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="（点击列表表头设置脱敏规则）"/>
+            </children>
+        </AnchorPane>
 	</children>
 </AnchorPane>

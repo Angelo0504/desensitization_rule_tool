@@ -1,6 +1,7 @@
 package com.wz.desensitizationRuleTool.controller;
 
 import com.alibaba.excel.metadata.Sheet;
+import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import com.wz.desensitizationRuleTool.controller.index.PluginManageController;
 import com.wz.desensitizationRuleTool.model.ToolFxmlLoaderConfiguration;
 import com.wz.desensitizationRuleTool.services.IndexService;
@@ -16,7 +17,12 @@ import com.xwintop.xcore.util.javafx.JavaFxViewUtil;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -30,6 +36,8 @@ import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -41,6 +49,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.controlsfx.control.SegmentedButton;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -111,6 +120,156 @@ public class IndexController extends IndexView {
     }
 
     private void initEvent() {
+        dataDesensitizationButton1.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                dataDesensitizationAnchorPane.setVisible(true);
+                dataDesensitizationAnchorPane.setManaged(true);
+                dataRestorationAnchorPane.setVisible(false);
+                dataRestorationAnchorPane.setManaged(false);
+            }
+        });
+
+        dataRestorationButton1.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                dataRestorationAnchorPane.setVisible(true);
+                dataRestorationAnchorPane.setManaged(true);
+                dataDesensitizationAnchorPane.setVisible(false);
+                dataDesensitizationAnchorPane.setManaged(false);
+            }
+        });
+
+        dataDesensitizationButton11.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                dataDesensitizationTable2.setVisible(false);
+                dataDesensitizationTable2.setManaged(false);
+                dataDesensitizationTable3.setVisible(false);
+                dataDesensitizationTable3.setManaged(false);
+                dataDesensitizationTable4.setVisible(false);
+                dataDesensitizationTable4.setManaged(false);
+                dataDesensitizationTable1.setVisible(true);
+                dataDesensitizationTable1.setManaged(true);
+                text1.setVisible(false);
+                text1.setManaged(false);
+                text2.setVisible(false);
+                text2.setManaged(false);
+                text0.setVisible(true);
+                text0.setManaged(true);
+
+            }
+        });
+
+        dataDesensitizationButton12.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                System.out.println("6666666666666666666");
+                dataDesensitizationTable1.setVisible(false);
+                dataDesensitizationTable1.setManaged(false);
+                dataDesensitizationTable3.setVisible(false);
+                dataDesensitizationTable3.setManaged(false);
+                dataDesensitizationTable4.setVisible(false);
+                dataDesensitizationTable4.setManaged(false);
+                dataDesensitizationTable2.setVisible(true);
+                dataDesensitizationTable2.setManaged(true);
+                text1.setVisible(false);
+                text1.setManaged(false);
+                text2.setVisible(false);
+                text2.setManaged(false);
+                text0.setVisible(true);
+                text0.setManaged(true);
+
+            }
+        });
+
+        dataDesensitizationButton13.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                dataDesensitizationTable2.setVisible(false);
+                dataDesensitizationTable2.setManaged(false);
+                dataDesensitizationTable1.setVisible(false);
+                dataDesensitizationTable1.setManaged(false);
+                dataDesensitizationTable3.setVisible(true);
+                dataDesensitizationTable3.setManaged(true);
+                dataDesensitizationTable4.setVisible(true);
+                dataDesensitizationTable4.setManaged(true);
+                text1.setVisible(true);
+                text1.setManaged(true);
+                text2.setVisible(true);
+                text2.setManaged(true);
+                text0.setVisible(false);
+                text0.setManaged(false);
+
+
+            }
+        });
+
+        dataRestorationButton11.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                dataRestorationTable3.setVisible(false);
+                dataRestorationTable3.setManaged(false);
+                dataRestorationTable2.setVisible(false);
+                dataRestorationTable2.setManaged(false);
+                dataRestorationTable4.setVisible(false);
+                dataRestorationTable4.setManaged(false);
+                dataRestorationTable1.setVisible(true);
+                dataRestorationTable1.setManaged(true);
+                text3.setVisible(false);
+                text3.setManaged(false);
+                text4.setVisible(false);
+                text4.setManaged(false);
+                text5.setVisible(true);
+                text5.setManaged(true);
+
+            }
+        });
+
+        dataRestorationButton12.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                dataRestorationTable1.setVisible(false);
+                dataRestorationTable1.setManaged(false);
+                dataRestorationTable3.setVisible(false);
+                dataRestorationTable3.setManaged(false);
+                dataRestorationTable4.setVisible(false);
+                dataRestorationTable4.setManaged(false);
+                dataRestorationTable2.setVisible(true);
+                dataRestorationTable2.setManaged(true);
+                text3.setVisible(false);
+                text3.setManaged(false);
+                text4.setVisible(false);
+                text4.setManaged(false);
+                text5.setVisible(true);
+                text5.setManaged(true);
+
+            }
+        });
+
+        dataRestorationButton13.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                dataRestorationTable2.setVisible(false);
+                dataRestorationTable2.setManaged(false);
+                dataRestorationTable1.setVisible(false);
+                dataRestorationTable1.setManaged(false);
+                dataRestorationTable4.setVisible(true);
+                dataRestorationTable4.setManaged(true);
+                dataRestorationTable3.setVisible(true);
+                dataRestorationTable3.setManaged(true);
+                text3.setVisible(true);
+                text3.setManaged(true);
+                text4.setVisible(true);
+                text4.setManaged(true);
+                text5.setVisible(false);
+                text5.setManaged(false);
+
+            }
+        });
+
+
+
     }
 
     /**
@@ -136,7 +295,7 @@ public class IndexController extends IndexView {
         menuItem.setAccelerator(KeyCombination.valueOf("Ctrl+O"));
         menuItem.setOnAction((ActionEvent event)->{
             //每次打开，需要清空之前的table对应的数据
-            stmtYsDataTable.getColumns().clear();
+            dataDesensitizationTable1.getColumns().clear();
             //打开文件
             System.out.println("打开文件");
             FileChooser fileChooser = new FileChooser();
@@ -175,21 +334,30 @@ public class IndexController extends IndexView {
                     TableColumn tableColumn = new TableColumn(head);
                     tableColumn.setPrefWidth(204);
                     tableColumn.setCellValueFactory(new MapValueFactory(head));
-                    stmtYsDataTable.getColumns().add(tableColumn);
+                    //表头添加鼠标双击事件
+//                    tableColumn.setCellFactory(tc->{
+//                        TableCell cell = new TableCell();
+//                        cell.setOnMouseClicked(e->{
+//                            System.out.println("表头点击事件");
+//                        });
+//                        return cell;
+//                    });
+                    dataDesensitizationTable1.getColumns().add(tableColumn);
                 }
+                dataDesensitizationTable1.setItems(analysisResults);
                 //设置表头之后，设置数据（将组装好的excel数据映射到表中）
                 //数据分页显示
-                pnPagination.setCurrentPageIndex(0);
-                pnPagination.setPageCount((int)(analysisResults.size()/20)+1);
-                pnPagination.setPageFactory(new Callback<Integer, Node>() {
-                    @Override
-                    public Node call(Integer param) {
-                        ObservableList<Map<String, Object>> dataList = FXCollections.observableArrayList();
-                        dataList = PageUtil.createPageList(param,20,analysisResults);
-                        stmtYsDataTable.setItems(dataList);
-                        return stmtYsDataTable;
-                    }
-                });
+//                pnPagination.setCurrentPageIndex(0);
+//                pnPagination.setPageCount((int)(analysisResults.size()/20)+1);
+//                pnPagination.setPageFactory(new Callback<Integer, Node>() {
+//                    @Override
+//                    public Node call(Integer param) {
+//                        ObservableList<Map<String, Object>> dataList = FXCollections.observableArrayList();
+//                        dataList = PageUtil.createPageList(param,20,analysisResults);
+//                        dataDesensitizationTable1.setItems(dataList);
+//                        return dataDesensitizationTable1;
+//                    }
+//                });
 
             }
         });
@@ -388,4 +556,34 @@ public class IndexController extends IndexView {
     private void operationManualAction(ActionEvent event){
         System.out.println("操作手册");
     }
+
+    /**
+     * 打开文件按钮
+     * @param event
+     */
+    @FXML
+    private void uploadFile(ActionEvent event){
+        System.out.println("打开文件");
+        //将没有数据上传文件内容隐藏
+        openFileAnchorPane.setVisible(false);
+        openFileAnchorPane.setManaged(false);
+        //根据togglebutton按钮组选择的是数据脱敏还是数据还原，显示对应的模块信息
+        //按钮组，按钮选中事件监听
+        if(dataDesensitizationButton1.isSelected()){
+            System.out.println("已选中数据脱敏按钮");
+            dataRestorationAnchorPane.setVisible(false);
+            dataRestorationAnchorPane.setManaged(false);
+            dataDesensitizationAnchorPane.setVisible(true);
+            dataDesensitizationAnchorPane.setManaged(true);
+        }else {
+            //选择数据还原按钮
+            dataDesensitizationAnchorPane.setVisible(false);
+            dataDesensitizationAnchorPane.setManaged(false);
+            System.out.println("已选中数据还原按钮");
+            dataRestorationAnchorPane.setVisible(true);
+            dataRestorationAnchorPane.setManaged(true);
+        }
+
+    }
+
 }
